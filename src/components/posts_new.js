@@ -36,7 +36,7 @@ class PostsNew extends Component {
 
                 <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
                     <label>Content</label>
-                    <input type="textarea" className="form-control" {...content} />
+                    <textarea className="form-control" {...content}></textarea>
                     <div className="text-help">{content.touched ? content.error : ''}</div>
                 </div>
 

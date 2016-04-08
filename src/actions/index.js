@@ -4,7 +4,9 @@ const URL_ROOT = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=iurii-12345';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST = 'FETCH_POST';
 export const CREATE_POST = 'CREATE_POST';
+export const DELETE_POST = 'DELETE_POST';
 
 export const fetchPosts = () => {
     const request = axios.get(`${URL_ROOT}/posts/${API_KEY}`);
@@ -15,11 +17,29 @@ export const fetchPosts = () => {
     });
 };
 
+export const fetchPost = (id) => {
+    const request = axios.get(`${URL_ROOT}/posts/${id}/${API_KEY}`);
+
+    return ({
+        type: FETCH_POST,
+        payload: request
+    });
+};
+
 export const createPost = (props) => {
     const request = axios.post(`${URL_ROOT}/posts/${API_KEY}`, props);
 
     return ({
         type: CREATE_POST,
+        payload: request
+    });
+};
+
+export const deletePost = (id) => {
+    const request = axios.delete(`${URL_ROOT}/posts/${id}/${API_KEY}`);
+
+    return ({
+        type: DELETE_POST,
         payload: request
     });
 };
